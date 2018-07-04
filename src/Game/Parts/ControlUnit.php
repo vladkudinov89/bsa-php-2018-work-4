@@ -15,7 +15,7 @@ class ControlUnit extends AbstractPart
     public function __construct()
     {
         $this->namePart = 'ControlUnit';
-        $this->isPartExist = 1;
+        $this->isPartExist = 0;
         $this->resourceNeed = [
             'IC',
             'Wires'

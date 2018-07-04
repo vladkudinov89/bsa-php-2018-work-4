@@ -5,8 +5,10 @@ namespace BinaryStudioAcademy\Game;
 use BinaryStudioAcademy\Game\Commands_Spaceship as Commands;
 use BinaryStudioAcademy\Game\Contracts\Io\Reader;
 use BinaryStudioAcademy\Game\Contracts\Io\Writer;
-use BinaryStudioAcademy\Game\Parts\PartsList;
-use BinaryStudioAcademy\Game\Resources\ResourceList;
+
+//use BinaryStudioAcademy\Game\Parts\PartsList;
+//use BinaryStudioAcademy\Game\Resources\ResourceList;
+use BinaryStudioAcademy\Game\User;
 use LucidFrame\Console\ConsoleTable;
 
 
@@ -16,8 +18,9 @@ class Game
 //    private $fire;
     private $commands;
     const COINS_TO_WIN = 5;
-    private $resourceList;
-    private $partsList;
+//    private $resourceList;
+//    private $partsList;
+    private $user;
 
 
 //    const COMMANDS = [
@@ -36,8 +39,9 @@ class Game
         $this->coins_counter = 0;
         $this->commands = (array)new Commands();
 
-        $this->resourceList = (array)new ResourceList;
-        $this->partsList = (array)new PartsList;
+        $this->user = new User();
+
+       
     }
 
 
@@ -51,7 +55,7 @@ class Game
 //        $input = trim($reader->read());
 //        $writer->writeln("Good luck with this task, {$input}!");
         $writer->writeln("Type 'help' to get information about commands.");
-        while ($this->coins_counter < self::COINS_TO_WIN) {
+        while (count($this->user->userShip) != count($this->user->readyShip)) {
             $this->step($reader, $writer);
         }
     }
@@ -77,6 +81,10 @@ class Game
         $answer = $this->find_command($command, $argument);
 //        if ($this->check_win())
 //            $answer = "Good job. You've completed this quest. Bye!";
+        if (count($this->user->readyShip) == count($this->user->userShip)) {
+            $answer = "Good job. You've completed this quest. Bye!";
+
+        }
         $writer->writeln($answer);
     }
 
@@ -95,12 +103,8 @@ class Game
 
     private function help(): string
     {
-        //print_r($this->commands['arrayCommands']);
         echo "\n--- Commands list: ---\n";
-//        foreach ($this->commands['arrayCommands'] as $command => $info) {
-//            $result .= "$command : $info" . PHP_EOL;
-//        }
-//        return $result;
+
         $table = new ConsoleTable();
         $table
             ->setHeaders(array('Name Command', 'Description'));
@@ -114,31 +118,7 @@ class Game
 
     private function status(): string
     {
-        echo "\n--- Status Resource List: --- \n";
-
-        $table = new ConsoleTable();
-        $table
-            ->setHeaders(array('Name Resource', 'Amount'));
-
-        foreach ($this->resourceList['stateResource'] as $row) {
-            $table->addRow(array_values($row));
-        }
-        $table->display();
-
-        echo "\n--- Status Parts List: --- \n";
-//        print_r($this->partsList['stateParts'][0]['namePart']);
-
-        $table2 = new ConsoleTable();
-        $table2
-            ->setHeaders(array('Name Parts', 'Exist'));
-
-            foreach ($this->partsList['stateParts'] as $command) {
-                $table2->addRow((array($command['namePart'] , $command['isPartExist'])));
-            }
-
-        $table2->display();
-
-
+        $this->user->userStatus();
         return '';
 
     }
@@ -146,38 +126,41 @@ class Game
     private function build($argument) : string
     {
 
-        //echo "def" . $argument;
-        //$input = explode(' ', trim($reader->read()));
-        //print_r($input);
-        //$writer->writeln($input);
+//        print_r($this->user->readyShip);
 
-        if ($argument)
-        {
-            return "Build : $argument" . PHP_EOL;
+
+        //check can create specific part of ship
+        if (in_array(trim($argument), $this->user->readyShip)) {
+
+//            echo "Можно создавать элемент корабля. Такой элемент есть на корабле" . PHP_EOL;
+
+            //check in array partsList our argument
+            if (!in_array(trim($argument), $this->user->userShip)) {
+
+                $this->user->userShip[] = trim($argument);
+//                $this->user->partsList['stateParts'][0]['isPartExist'] = 1;
+                $this->user->changeExistPart(trim($argument));
+                echo "$argument is ready!" . PHP_EOL;
+
+
+
+            } else {
+                echo "Такой элемент корабля уже есть";
+            }
+
+        } else {
+            echo "Нет такого элемента корабля: " . $argument;
         }
-        else
-        {
-            return "Can not build : $argument" . PHP_EOL;
-        }
 
-//        $result = "\nBuilt commands list: \n";
-//        foreach (SELF::$buildFunct as $command => $info) {
-//            $result .= "$command : $info" . PHP_EOL;
-//        }
-//        return $result;
-
-        //return '';
+        return '';
 
     }
 
     private function scheme($argument) : string
     {
-        if ($argument)
-        {
+        if ($argument) {
             return "Scheme : $argument" . PHP_EOL;
-        }
-        else
-        {
+        } else {
             return "Can not do Scheme: $argument" . PHP_EOL;
         }
     }
