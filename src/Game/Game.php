@@ -106,7 +106,7 @@ class Game
         return $result;
     }
 
-    private function s()
+    private function s(): string
     {
 
 //
