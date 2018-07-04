@@ -15,13 +15,17 @@ class Commands_Spaceship
     public function __construct()
     {
         $this->arrayCommands = [
-            'h' => 'user help',
-            's' => 'View Status',
+            'help' => 'user help',
+            'status' => 'View Status',
+//            'build:<spaceship_module>' => 'Build a ship module',
+//            'scheme:<spaceship_module>' => 'Info about what modules/resources are needed',
+//            'produce:<combined_resource>' => 'Produce a combined resource',
+//            'mine:<resource_name>' => 'Add a resource unit to inventory',
+            'build' => 'Build a ship module',
+            'scheme' => 'Info about what modules/resources are needed',
+            'produce' => 'Produce a combined resource',
+            'mine' => 'Add a resource unit to inventory',
             'exit' => 'Exit Game',
-            'mine:unnamed' => 'No such resource.',
-            'build' => 'Inventory should have: metal,fire. Argument: <build>',
-            'build:shell' => 'shell',
-            'build:porthole' => 'Inventory should have: sand,fire',
         ];
     }
 

@@ -12,21 +12,18 @@ use BinaryStudioAcademy\Game\Contracts\iResource\Resource;
 
 abstract class AbstractResource implements Resource
 {
-//    private $name;
-//    private $count;
+    public $name ;
+    public $count ;
 
-
-    /**
-     * @return mixed
-     */
     public function getName() : string
     {
         return $this->name;
     }
 
-//    public function getCountResource() : int
-//    {
-//       return $this->count;
-//    }
+    public function getCount(): int
+    {
+        return $this->count;
+    }
+
 
 }

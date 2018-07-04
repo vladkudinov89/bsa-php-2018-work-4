@@ -11,8 +11,8 @@ namespace BinaryStudioAcademy\Game\Resources;
 
 class Iron extends AbstractResource
 {
-    public $name ;
-    public $count ;
+//    public $name ;
+//    public $count ;
 
     public function __construct()
     {
@@ -20,15 +20,15 @@ class Iron extends AbstractResource
         $this->count = 2;
     }
 
-    public function getName() : string
-    {
-        return $this->name;
-    }
-
-    public function getCount(): int
-    {
-        return $this->count;
-    }
+//    public function getName() : string
+//    {
+//        return $this->name;
+//    }
+//
+//    public function getCount(): int
+//    {
+//        return $this->count;
+//    }
 
 
 
