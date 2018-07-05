@@ -189,5 +189,32 @@ class User
 
     }
 
+    public function schemeModules(string $argument) : string
+    {
+        if(in_array(trim($argument) , $this->readyShip )){
+            foreach ($this->partsList['stateParts'] as $key => $value) {
+
+                if ($this->partsList['stateParts'][$key]['namePart'] === ucfirst($argument)) {
+
+                    echo "\n--- List Needs to: ---\n";
+
+                    $table3 = new ConsoleTable();
+                    $table3
+                        ->setHeaders(array('Need Resource to create'));
+
+                    foreach ($this->partsList['stateParts'][$key]['resourceNeed'] as $info) {
+                        $table3->addRow((array($info)));
+                    }
+                    $table3->display();
+
+                }
+
+            }
+        }
+
+        return '';
+
+    }
+
 
 }

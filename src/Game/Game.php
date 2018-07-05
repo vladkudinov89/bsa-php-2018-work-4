@@ -110,10 +110,13 @@ class Game
     private function scheme($argument) : string
     {
         if ($argument) {
-            return "Scheme : $argument" . PHP_EOL;
+            $this->user->schemeModules($argument);
+//            print_r($this->user->schemeModules($argument));
         } else {
             return "Can not do Scheme: $argument" . PHP_EOL;
         }
+
+        return '';
     }
 
     /**
