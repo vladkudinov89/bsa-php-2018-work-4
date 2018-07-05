@@ -20,6 +20,9 @@ class PartsList
             (array)new Shell(),
             (array)new Engine(),
             (array)new ControlUnit(),
+            (array)new Launcher(),
+            (array)new Porthole(),
+            (array)new Tank(),
 
         ];
 

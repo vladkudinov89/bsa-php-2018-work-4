@@ -18,17 +18,17 @@ abstract class AbstractPart implements Parts
     public $resourceNeed;
     public $isPartExist;
 
-    public function produce(array $resourceNeed) {
-        $this->use($resourceNeed);
-        $this->isPartExist = true;
-    }
-    private function use(array $resourceNeed) {
-        foreach ($this->resourceNeed as $r) {
-            if (array_key_exists($r, $resourceNeed)) {
-                $resourceNeed[$r]->use();
-            }
-        }
-    }
+//    public function produce(array $resourceNeed) {
+//        $this->use($resourceNeed);
+//        $this->isPartExist = true;
+//    }
+//    private function use(array $resourceNeed) {
+//        foreach ($this->resourceNeed as $r) {
+//            if (array_key_exists($r, $resourceNeed)) {
+//                $resourceNeed[$r]->use();
+//            }
+//        }
+//    }
 
 
 }
