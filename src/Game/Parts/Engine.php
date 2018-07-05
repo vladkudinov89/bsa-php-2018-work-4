@@ -7,7 +7,7 @@
  */
 
 namespace BinaryStudioAcademy\Game\Parts;
-
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractPart;
 
 class Engine extends AbstractPart
 {

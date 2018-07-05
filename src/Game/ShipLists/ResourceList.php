@@ -6,7 +6,9 @@
  * Time: 11:51
  */
 
-namespace BinaryStudioAcademy\Game\Resources;
+namespace BinaryStudioAcademy\Game\ShipLists;
+
+use BinaryStudioAcademy\Game\Resources\{Fire , Water , Silicon , Sand , Metal , Iron , Fuel , Copper , Carbon};
 
 
 class ResourceList

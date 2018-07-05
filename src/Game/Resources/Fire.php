@@ -2,12 +2,7 @@
 
 namespace BinaryStudioAcademy\Game\Resources;
 
-/**
- * Created by PhpStorm.
- * User: vlad
- * Date: 03.07.18
- * Time: 18:56
- */
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractResource;
 
 class Fire extends AbstractResource
 {

@@ -9,8 +9,8 @@
 namespace BinaryStudioAcademy\Game;
 
 
-use BinaryStudioAcademy\Game\Parts\PartsList;
-use BinaryStudioAcademy\Game\Resources\ResourceList;
+use BinaryStudioAcademy\Game\ShipLists\PartsList;
+use BinaryStudioAcademy\Game\ShipLists\ResourceList;
 use LucidFrame\Console\ConsoleTable;
 
 class User
