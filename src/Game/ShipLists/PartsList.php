@@ -6,7 +6,9 @@
  * Time: 18:02
  */
 
-namespace BinaryStudioAcademy\Game\Parts;
+namespace BinaryStudioAcademy\Game\ShipLists;
+
+use BinaryStudioAcademy\Game\Parts\{Shell , Tank , Porthole , Launcher , Engine , ControlUnit };
 
 
 class PartsList

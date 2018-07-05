@@ -7,7 +7,7 @@
  */
 
 namespace BinaryStudioAcademy\Game\Parts;
-
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractPart;
 
 class ControlUnit extends AbstractPart
 {

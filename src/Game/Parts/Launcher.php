@@ -8,7 +8,7 @@
 
 namespace BinaryStudioAcademy\Game\Parts;
 
-
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractPart;
 class Launcher extends AbstractPart
 {
 

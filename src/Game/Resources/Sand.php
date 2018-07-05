@@ -9,6 +9,8 @@
 
 namespace BinaryStudioAcademy\Game\Resources;
 
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractResource;
+
 class Sand extends AbstractResource
 {
 

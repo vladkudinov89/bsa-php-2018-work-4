@@ -1,14 +1,8 @@
 <?php
-namespace BinaryStudioAcademy\Game\Resources;
+namespace BinaryStudioAcademy\Game\AbstractClasses;
 
 use BinaryStudioAcademy\Game\Contracts\iResource\Resource;
 
-/**
- * Created by PhpStorm.
- * User: vlad
- * Date: 03.07.18
- * Time: 18:19
- */
 
 abstract class AbstractResource implements Resource
 {

@@ -8,6 +8,8 @@
 
 namespace BinaryStudioAcademy\Game\Resources;
 
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractResource;
+
 class Metal extends AbstractResource
 {
     public function __construct()

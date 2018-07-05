@@ -8,6 +8,7 @@
 
 namespace BinaryStudioAcademy\Game\Resources;
 
+use BinaryStudioAcademy\Game\AbstractClasses\AbstractResource;
 
 class Fuel extends AbstractResource
 {
