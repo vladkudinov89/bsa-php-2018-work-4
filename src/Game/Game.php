@@ -69,7 +69,10 @@ class Game
         // TODO: Implement step by step mode with game state persistence between steps
 //        $writer->writeln("You can't play yet. Please read input and convert it to commands.");
 //        $writer->writeln("Don't forget to create game's world.");
-        $this->step($reader, $writer);
+//        $this->step($reader, $writer);
+        while (count($this->user->userShip) != count($this->user->readyShip)) {
+            $this->step($reader, $writer);
+        }
     }
 
     private function step(Reader $reader, Writer $writer) :void

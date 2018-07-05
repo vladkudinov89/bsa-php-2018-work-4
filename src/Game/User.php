@@ -21,6 +21,12 @@ class User
     public $userStatus;
     public $userShip;
 
+    public $resNeed;
+    public $resHaveUser;
+    public $readyToBuild;
+
+    public $arrayToAddPartShip;
+
     public $readyShip = [
         'shell',
         'wires',
@@ -83,6 +89,7 @@ class User
 
     public function changeExistPart(string $argChange) : void
     {
+        print_r($this->userShip);
         //check can create specific part of ship
         if (in_array(trim($argChange), $this->readyShip)) {
 
@@ -91,50 +98,56 @@ class User
             //check in array partsList our argument
             if (!in_array(trim($argChange), $this->userShip)) {
 
-
-                //check need resource to build element Ship
-//                $needResource =
-
-//                if(){
-//
-//                } else {
-//
-//                }
-
-                $this->userShip[] = trim($argChange);
-
-                $resHaveUser = $this->resourceList['stateResource'];
-
                 foreach ($this->partsList['stateParts'] as $key => $value) {
-
-
-//            print_r($this->user->partsList['stateParts'][$key]['resourceNeed']);
-//                        $er = array_search($this->partsList['stateParts'][$key]['resourceNeed'] , ucfirst($argChange));
-//                    print_r($er);
-
 
                     if ($this->partsList['stateParts'][$key]['namePart'] === ucfirst($argChange)) {
 
-                        $resNeed = $this->partsList['stateParts'][$key]['resourceNeed'];
+                        if ($this->needResources(
+                            $this->partsList['stateParts'][$key]['resourceNeed'],
+                            $this->resourceList['stateResource']
+                        )
+                        ) {
+                            $this->partsList['stateParts'][$key]['isPartExist'] = 1;
+                            //Add to ready ship list
+                            $this->userShip[] = trim($argChange);
+                            echo "$argChange is ready!" . PHP_EOL;
+                        } else {
+                            echo "$argChange Не построен!" . PHP_EOL;
+                        }
+
+//                        //Ищем что нам необходимо из материалов
+//                        foreach ($this->partsList['stateParts'][$key]['resourceNeed'] as $res) {
+//
+//                            $resHaveUser = $this->resourceList['stateResource'];
+//
+//                            //Смотрим какаие ресурсы есть у User
+//                            foreach ($resHaveUser as $key => $value) {
+//
+//                                //Если совпадает название ресурса
+//                                if ($this->resourceList['stateResource'][$key]['name'] === ucfirst($res)) {
+//
+//                                    if ($this->resourceList['stateResource'][$key]['count'] > 0) {
+//                                        $this->resourceList['stateResource'][$key]['count'] -= 1;
+//                                        $readyToBuild = true;
+//                                        echo "Материал за постройка корабля отминусован";
+//
+//                                    } else {
+//                                        $readyToBuild = false;
+//                                        echo "Мало ресурса : " . $res . PHP_EOL;
+//
+//                                    }
+//
+//                                }
+//                            }
+//
+//                        }
+
+//                            $this->partsList['stateParts'][$key]['isPartExist'] = 1;
 
 
+                    }//if
 
-//                        $this->partsList['stateParts'][$key]['isPartExist'] = 1;
-                    }
-
-                }
-
-                print_r($resNeed);
-                print_r($resHaveUser);
-
-                foreach ($resNeed as $res){
-                    $result = array_search($res, $resHaveUser);
-                    print_r($result);
-                }
-
-
-                echo "$argChange is ready!" . PHP_EOL;
-
+                }//foreach
 
 
             } else {
@@ -146,6 +159,42 @@ class User
         }
 
     }
+
+    private function needResources(array $resourceNeed, array &$usersResource)
+    {
+
+        //Ищем что нам необходимо из материалов
+        foreach ($resourceNeed as $res) {
+
+            //$usersResource = $this->resourceList['stateResource'];
+
+            //Смотрим какаие ресурсы есть у User
+            foreach ($usersResource as $key => $value) {
+
+                //Если совпадает название ресурса
+                if ($usersResource[$key]['name'] === ucfirst($res)) {
+
+                    if ($usersResource[$key]['count'] > 0) {
+                        $usersResource[$key]['count'] -= 1;
+                        $readyToBuild = true;
+                        echo "Материал " . $usersResource[$key]['name'] . " за постройка корабля отминусован" . PHP_EOL;
+
+
+                    } else {
+                        $readyToBuild = false;
+                        echo "Мало ресурса : " . $res . PHP_EOL;
+
+                    }
+
+                }
+            }
+
+        }
+
+        return $readyToBuild;
+
+    }
+
 
 
     public function mineResoure(string $argument) : void
