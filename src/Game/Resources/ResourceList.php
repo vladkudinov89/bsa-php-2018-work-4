@@ -20,6 +20,7 @@ class ResourceList
              (array)new Fire(),
              (array)new Iron(),
              (array)new Sand(),
+             (array)new Metal(),
         ];
 
     }
