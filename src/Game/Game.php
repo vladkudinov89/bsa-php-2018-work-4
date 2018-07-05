@@ -124,6 +124,7 @@ class Game
      */
     private function exit(): void
     {
+        echo "===== Good Bye! =====" . PHP_EOL;
         exit;
     }
 }
