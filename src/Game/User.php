@@ -18,25 +18,15 @@ class User
 
     public $resourceList;
     public $partsList;
-    public $userStatus;
     public $userShip;
-
-    public $resNeed;
-    public $resHaveUser;
-    public $readyToBuild;
-
-    public $arrayToAddPartShip;
 
     public $readyShip = [
         'shell',
-        'wires',
-        'ic',
         'porthole',
-        'control_unit',
+        'controlunit',
         'engine',
         'launcher',
         'tank',
-
     ];
 
     public $resourceAll = [
@@ -58,6 +48,20 @@ class User
 
         $this->userShip = [];
 
+    }
+
+    public function userHelp(array $arr) : void
+    {
+        echo "\n--- Commands list: ---\n";
+
+        $table = new ConsoleTable();
+        $table
+            ->setHeaders(array('Name Command', 'Description'));
+
+        foreach ($arr as $command => $info) {
+            $table->addRow((array($command, $info)));
+        }
+        $table->display();
     }
 
     public function userStatus()
@@ -89,11 +93,9 @@ class User
 
     public function changeExistPart(string $argChange) : void
     {
-        print_r($this->userShip);
+
         //check can create specific part of ship
         if (in_array(trim($argChange), $this->readyShip)) {
-
-//            echo "Можно создавать элемент корабля. Такой элемент есть на корабле" . PHP_EOL;
 
             //check in array partsList our argument
             if (!in_array(trim($argChange), $this->userShip)) {
@@ -102,7 +104,8 @@ class User
 
                     if ($this->partsList['stateParts'][$key]['namePart'] === ucfirst($argChange)) {
 
-                        if ($this->needResources(
+                        if (
+                        $this->needResources(
                             $this->partsList['stateParts'][$key]['resourceNeed'],
                             $this->resourceList['stateResource']
                         )
@@ -110,40 +113,10 @@ class User
                             $this->partsList['stateParts'][$key]['isPartExist'] = 1;
                             //Add to ready ship list
                             $this->userShip[] = trim($argChange);
-                            echo "$argChange is ready!" . PHP_EOL;
+                            echo "=== $argChange is ready! ===" . PHP_EOL;
                         } else {
                             echo "$argChange Не построен!" . PHP_EOL;
                         }
-
-//                        //Ищем что нам необходимо из материалов
-//                        foreach ($this->partsList['stateParts'][$key]['resourceNeed'] as $res) {
-//
-//                            $resHaveUser = $this->resourceList['stateResource'];
-//
-//                            //Смотрим какаие ресурсы есть у User
-//                            foreach ($resHaveUser as $key => $value) {
-//
-//                                //Если совпадает название ресурса
-//                                if ($this->resourceList['stateResource'][$key]['name'] === ucfirst($res)) {
-//
-//                                    if ($this->resourceList['stateResource'][$key]['count'] > 0) {
-//                                        $this->resourceList['stateResource'][$key]['count'] -= 1;
-//                                        $readyToBuild = true;
-//                                        echo "Материал за постройка корабля отминусован";
-//
-//                                    } else {
-//                                        $readyToBuild = false;
-//                                        echo "Мало ресурса : " . $res . PHP_EOL;
-//
-//                                    }
-//
-//                                }
-//                            }
-//
-//                        }
-
-//                            $this->partsList['stateParts'][$key]['isPartExist'] = 1;
-
 
                     }//if
 
@@ -151,11 +124,11 @@ class User
 
 
             } else {
-                echo "Такой элемент корабля уже есть";
+                echo "Such an element of the ship is already there";
             }
 
         } else {
-            echo "Нет такого элемента корабля: " . $argChange;
+            echo "There is no such element of the ship: " . $argChange;
         }
 
     }
@@ -195,17 +168,11 @@ class User
 
     }
 
-
-
     public function mineResoure(string $argument) : void
     {
-//        $this->resourceList['stateResource']
 
         //check can create specific resource
         if (in_array(trim($argument), $this->resourceAll)) {
-
-//            echo "Можно создавать элемент корабля. Такой элемент есть на корабле" . PHP_EOL;
-
 
             foreach ($this->resourceList['stateResource'] as $key => $value) {
 

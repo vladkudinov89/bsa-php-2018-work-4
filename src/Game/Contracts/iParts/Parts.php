@@ -10,6 +10,6 @@ namespace BinaryStudioAcademy\Game\Contracts\iParts;
 
 interface Parts
 {
-    public function produce(array $resourceNeed);
+//    public function produce(array $resourceNeed);
 
 }

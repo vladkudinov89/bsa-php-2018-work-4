@@ -17,10 +17,6 @@ class Commands_Spaceship
         $this->arrayCommands = [
             'help' => 'user help',
             'status' => 'View Status',
-//            'build:<spaceship_module>' => 'Build a ship module',
-//            'scheme:<spaceship_module>' => 'Info about what modules/resources are needed',
-//            'produce:<combined_resource>' => 'Produce a combined resource',
-//            'mine:<resource_name>' => 'Add a resource unit to inventory',
             'build' => 'Build a ship module',
             'scheme' => 'Info about what modules/resources are needed',
             'produce' => 'Produce a combined resource',
@@ -28,22 +24,5 @@ class Commands_Spaceship
             'exit' => 'Exit Game',
         ];
     }
-
-
-
-
-
-//    public function commands()
-//    {
-//        return [
-//            'help' => 'user help',
-//            'status' => 'View Status',
-//            'exit' => 'Exit Game',
-//            'mine:unnamed' => 'No such resource.',
-//            'build' => 'Inventory should have: metal,fire. Argument: <build>',
-//            'build:shell' => 'shell',
-//            'build:porthole' => 'Inventory should have: sand,fire',
-//        ];
-//    }
 
 }

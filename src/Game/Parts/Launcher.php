@@ -2,26 +2,24 @@
 /**
  * Created by PhpStorm.
  * User: vlad
- * Date: 04.07.18
- * Time: 19:11
+ * Date: 05.07.18
+ * Time: 15:59
  */
 
 namespace BinaryStudioAcademy\Game\Parts;
 
 
-class ControlUnit extends AbstractPart
+class Launcher extends AbstractPart
 {
 
     public function __construct()
     {
-        $this->namePart = 'Controlunit';
+        $this->namePart = 'Launcher';
         $this->isPartExist = 0;
         $this->resourceNeed = [
-            'iron',
+            'water',
             'fire',
-            'silicon',
-            'copper',
-            'wires'
+            'fuel',
         ];
     }
 
