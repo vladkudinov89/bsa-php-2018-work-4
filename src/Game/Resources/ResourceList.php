@@ -21,6 +21,11 @@ class ResourceList
              (array)new Iron(),
              (array)new Sand(),
              (array)new Metal(),
+             (array)new Carbon(),
+             (array)new Silicon(),
+             (array)new Copper(),
+             (array)new Water(),
+             (array)new Fuel(),
         ];
 
     }

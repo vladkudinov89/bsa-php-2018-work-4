@@ -15,7 +15,7 @@ class Fire extends AbstractResource
     public function __construct()
     {
         $this->name = 'Fire';
-        $this->count = 0;
+        $this->count = 10;
     }
 
     

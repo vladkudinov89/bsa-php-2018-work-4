@@ -177,7 +177,7 @@ class User
                     if ($usersResource[$key]['count'] > 0) {
                         $usersResource[$key]['count'] -= 1;
                         $readyToBuild = true;
-                        echo "Материал " . $usersResource[$key]['name'] . " за постройка корабля отминусован" . PHP_EOL;
+                        echo "Материал " . $usersResource[$key]['name'] . " за постройку корабля отминусован" . PHP_EOL;
 
 
                     } else {
