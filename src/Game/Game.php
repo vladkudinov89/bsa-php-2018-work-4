@@ -138,7 +138,7 @@ class Game
             if (!in_array(trim($argument), $this->user->userShip)) {
 
                 $this->user->userShip[] = trim($argument);
-//                $this->user->partsList['stateParts'][0]['isPartExist'] = 1;
+
                 $this->user->changeExistPart(trim($argument));
                 echo "$argument is ready!" . PHP_EOL;
 

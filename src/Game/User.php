@@ -25,11 +25,11 @@ class User
         'shell',
         'wires',
         'ic',
-//      'porthole',
-//      'control_unit',
-//      'engine',
-//      'launcher',
-//      'tank',
+        'porthole',
+        'control_unit',
+        'engine',
+        'launcher',
+        'tank',
 
     ];
 
@@ -71,19 +71,13 @@ class User
 
     public function changeExistPart(string $argChange) : void
     {
-//        print_r($this->userShip);
-//        echo $argChange . PHP_EOL;
-//        print_r($this->partsList['stateParts']);
-//        for ($i = 0; $i < count($this->partsList['stateParts']); $i++) {
-//            foreach ($this->partsList['stateParts'][$i] as $key => $value) {
-//                echo $key . $value;
-//            }
-//        }
+        foreach ($this->partsList['stateParts'] as $key => $value) {
 
-//        $key = array_search('shell', $this->partsList['stateParts']);
-//        print_r($key);
+            if ($this->partsList['stateParts'][$key]['namePart'] === ucfirst($argChange)) {
+                $this->partsList['stateParts'][$key]['isPartExist'] = 1;
+            }
 
-        print_r(array_values($this->partsList['stateParts']));
+        }
     }
 
 //    public function existUserShip()
@@ -92,6 +86,8 @@ class User
 //            echo "Есть в наборе";
 //        }
 //    }
+
+   
 
 
 }
