@@ -38,10 +38,14 @@ class Game
     {
         $this->coins_counter = 0;
         $this->commands = (array)new Commands();
-
         $this->user = new User();
+//        print_r($this->user->resourceList);
+//        print_r($this->user->partsList);
+//        foreach ($this->user->resourceList['stateResource'] as $key => $value) {
+//            print_r($this->user->resourceList['stateResource'][$key]['name']);
+//        }
 
-       
+
     }
 
 
@@ -65,7 +69,8 @@ class Game
         // TODO: Implement step by step mode with game state persistence between steps
 //        $writer->writeln("You can't play yet. Please read input and convert it to commands.");
 //        $writer->writeln("Don't forget to create game's world.");
-        $this->step($reader, $writer);
+//        $this->step($reader, $writer);
+            $this->step($reader, $writer);
     }
 
     private function step(Reader $reader, Writer $writer) :void
@@ -126,34 +131,17 @@ class Game
     private function build($argument) : string
     {
 
-//        print_r($this->user->readyShip);
-
-
-        //check can create specific part of ship
-        if (in_array(trim($argument), $this->user->readyShip)) {
-
-//            echo "Можно создавать элемент корабля. Такой элемент есть на корабле" . PHP_EOL;
-
-            //check in array partsList our argument
-            if (!in_array(trim($argument), $this->user->userShip)) {
-
-                $this->user->userShip[] = trim($argument);
-
-                $this->user->changeExistPart(trim($argument));
-                echo "$argument is ready!" . PHP_EOL;
-
-
-
-            } else {
-                echo "Такой элемент корабля уже есть";
-            }
-
-        } else {
-            echo "Нет такого элемента корабля: " . $argument;
-        }
+        $this->user->changeExistPart(trim($argument));
 
         return '';
 
+    }
+
+    private function mine($argument) : string
+    {
+       $this->user->mineResoure(trim($argument));
+
+        return '';
     }
 
     private function scheme($argument) : string

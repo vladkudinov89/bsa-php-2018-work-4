@@ -2,8 +2,6 @@
 
 namespace BinaryStudioAcademy\Game\Resources;
 
-//use BinaryStudioAcademy\Game\Resources\AbstractResource;
-
 /**
  * Created by PhpStorm.
  * User: vlad
@@ -13,24 +11,12 @@ namespace BinaryStudioAcademy\Game\Resources;
 
 class Fire extends AbstractResource
 {
-//    public $name ;
-//    public $count ;
 
     public function __construct()
     {
         $this->name = 'Fire';
-        $this->count = 0;
+        $this->count = 10;
     }
 
-//    public function getName() : string
-//    {
-//        return $this->name;
-//    }
-//
-//    public function getCount(): int
-//    {
-//        return $this->count;
-//    }
-//
     
 }
